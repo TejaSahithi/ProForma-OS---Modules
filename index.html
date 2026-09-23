@@ -106,7 +106,7 @@ render();
 document.getElementById('pfo-add').onclick=()=>{sync();modules.push([String(modules.length+1).padStart(2,'0'),'New module','','',['New capability'],[]]);render();grid.lastElementChild.scrollIntoView({behavior:'smooth',block:'center'});status.textContent='New module added';};
 document.getElementById('pfo-preview').onclick=e=>{const on=root.dataset.preview!=='true';root.dataset.preview=on?'true':'false';e.target.textContent=on?'Return to edit mode':'Preview mode';};
 function data(){sync();return {title:document.getElementById('pfo-title').textContent.trim(),modules,rules:document.getElementById('pfo-rules').value.split('\n').filter(Boolean),foundation:document.getElementById('pfo-foundation').innerText.trim()};}
-const STORAGE_KEY='proforma-os-architecture-editor-v4';
+const STORAGE_KEY='proforma-os-architecture-editor-v5';
 let saveTimer;
 function persistNow(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data()));status.textContent='Saved automatically';}catch{status.textContent='Automatic saving is unavailable. Use Save project.';}}
 function scheduleSave(){clearTimeout(saveTimer);status.textContent='Saving...';saveTimer=setTimeout(persistNow,250);}
